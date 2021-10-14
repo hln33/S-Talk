@@ -1,0 +1,7 @@
+KNOWN ERRORS:
+
+1) If messages are sent rapidly there is a chance that an invalid read of size 1 will occur. Cause is unknown.
+
+2) Did not figure out a way to use select() effectively. Currently select() waits 8 seconds or until input is ready before proceeding. I wanted it so that select would wait indefinately until shutdown was triggered or input was received. NOTE: when running through valgrind it is likely that one process will not shutdown because it takes longer than 8 seconds to process the terminating signal. This is because with valgrind the program is much slower.
+
+3) Did not address for when messages are greater than the memory allocated. If I had more time I would try to find a way to split a large message into multiple smaller messages.
